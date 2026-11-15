@@ -1,27 +1,41 @@
-﻿{
+{
   "name": "lumi-ai",
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "main": "electron.cjs",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "vite build",
+    "build:exe": "vite build && electron-builder --win portable"
   },
   "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/core": "^6.0.0",
+    "lucide-react": "^0.460.0",
     "pdfjs-dist": "3.11.174",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "lucide-react": "^0.460.0"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@capacitor/cli": "^6.0.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.19",
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.2.2",
     "vite": "^5.3.1"
+  },
+  "build": {
+    "appId": "com.lumiai.app",
+    "productName": "LUMI AI",
+    "files": ["dist/**/*", "electron.cjs"],
+    "win": {
+      "target": "portable"
+    }
   }
 }
